@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "django-boilerplate"
+version = "0.1.0"
+description = ""
+authors = ["Ong Tze Wei <ong.tzewei@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_boilerplate"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-decouple = "^3.7"
+django = "^5.0"
+
+[tool.poetry.group.dev.dependencies]
+pip-audit = "^2.4.14"
+pylint = "^2.16.1"
+coverage = "^7.1.0"
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  |app/migrations/
+  |\.txt
+  |\.lock
+  |Dockerfile
+)/
+'''

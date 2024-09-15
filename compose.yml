@@ -1,0 +1,10 @@
+services:
+  django-webapp:
+    container_name: django-app-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env.docker
+    ports:
+      - 8080:${PORT}
