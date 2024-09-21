@@ -1,6 +1,6 @@
 services:
-  django-webapp:
-    container_name: django-app-container
+  bfg-foodchain-webapp:
+    container_name: foodchain-webapp-container
     build:
       context: .
       dockerfile: Dockerfile

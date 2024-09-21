@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -46,7 +47,7 @@ TEMPLATES = [
 
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(',')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
-WSGI_APPLICATION = 'django_boilerplate.wsgi.application'
+WSGI_APPLICATION = 'bfg_foodchain_webapp.wsgi.application'
 ROOT_URLCONF = 'app.urls'
 
 # Default primary key field type
@@ -101,3 +102,11 @@ STATIC_URL = config('STATIC_URL')
 STATIC_ROOT = config('STATIC_ROOT')
 MEDIA_URL = config('MEDIA_URL')
 MEDIA_ROOT = config('MEDIA_ROOT')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 50,
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}

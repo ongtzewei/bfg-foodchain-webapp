@@ -1,15 +1,17 @@
 [tool.poetry]
-name = "django-boilerplate"
+name = "bfg-foodchain-webapp"
 version = "0.1.0"
 description = ""
 authors = ["Ong Tze Wei <ong.tzewei@gmail.com>"]
 readme = "README.md"
-packages = [{include = "django_boilerplate"}]
+packages = [{include = "bfg_foodchain_webapp"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 python-decouple = "^3.7"
 django = "^5.0"
+djangorestframework = "^3.15.2"
+pillow = "^10.4.0"
 
 [tool.poetry.group.dev.dependencies]
 pip-audit = "^2.4.14"
