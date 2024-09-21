@@ -110,3 +110,8 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+CSRF_COOKIE_DOMAIN = config('CSRF_COOKIE_DOMAIN')
+CSRF_COOKIE_NAME = config('CSRF_COOKIE_NAME')
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(',')
