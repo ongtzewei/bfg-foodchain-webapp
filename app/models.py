@@ -1,6 +1,5 @@
 import uuid
 from django.contrib.auth.models import AbstractUser
-from django.urls import reverse
 from django.db import models
 from app.utils import image_upload_path
 
@@ -11,6 +10,7 @@ class User(AbstractUser):
 
 class FoodCategory(models.Model):
     name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to=image_upload_path,null=True,blank=True)
     sort =  models.PositiveSmallIntegerField(default=10)
     date_added = models.DateTimeField(auto_now_add=True,db_index=True)
     class Meta:
@@ -47,6 +47,7 @@ class Food(models.Model):
     sodium = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True,verbose_name='Sodium (milligrams)')
     starch  = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True,verbose_name='Starch (grams)')
     sugar_total = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True,verbose_name='Sugar (grams)')
+    iron = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True,verbose_name='Iron (milligrams)')
     calcium = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True,verbose_name='Calcium (milligram)')
     date_added = models.DateTimeField(auto_now_add=True,db_index=True)
     last_modified = models.DateTimeField(auto_now=True)

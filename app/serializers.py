@@ -1,7 +1,14 @@
 from rest_framework import serializers
 from app.models import Food, FoodCategory
 
-class FoodSerializer(serializers.HyperlinkedModelSerializer):
+
+class DetailedFoodSerializer(serializers.HyperlinkedModelSerializer):
+  class Meta:
+    model = Food
+    fields = ('id', 'name', 'image', 'url')
+
+
+class SimpleFoodSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Food
     fields = ('id', 'name', 'image', 'url')
@@ -10,4 +17,4 @@ class FoodSerializer(serializers.HyperlinkedModelSerializer):
 class FoodCategorySerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = FoodCategory
-    fields = ('name', 'sort', 'url')
+    fields = ('name', 'image', 'sort', 'url')

@@ -16,7 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'rest_framework'
+    'rest_framework',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -32,7 +33,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(BASE_DIR/'app/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,3 +116,26 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 CSRF_COOKIE_DOMAIN = config('CSRF_COOKIE_DOMAIN')
 CSRF_COOKIE_NAME = config('CSRF_COOKIE_NAME')
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(',')
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = config('AWS_LOCATION')
+AWS_DEFAULT_ACL = 'public-read'
+
+STATIC_URL = config('STATIC_URL')
+STATIC_ROOT = config('STATIC_ROOT')
+MEDIA_URL = config('MEDIA_URL')
+MEDIA_ROOT = config('MEDIA_ROOT')
+STORAGES = {
+    'staticfiles': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+    },
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+    },
+}
