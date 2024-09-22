@@ -1,5 +1,6 @@
 import uuid
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.db import models
 from app.utils import image_upload_path
 
@@ -63,24 +64,12 @@ class Food(models.Model):
         return '%s' %(self.name)
 
 
-class FoodReplacement(models.Model):
-    food = models.ForeignKey(Food,on_delete=models.CASCADE, related_name='replace_from')
-    replacement = models.ForeignKey(Food, on_delete=models.CASCADE, related_name='replace_to')
-    date_added = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    class Meta:
-        app_label = 'app'
-        db_table = 'app_foodreplacement'
-        verbose_name = 'Food Replacement'
-        ordering = ['date_added']
-
-    def __str__(self):
-        return '%s' %(self.name)
-
+mobile_validator = RegexValidator(r"^\+?1?\d{9,15}$", "Mobile number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
 
 class Notification(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     message = models.JSONField(default=dict)
+    mobile = models.CharField(max_length=17, validators=[mobile_validator])
     is_pushed = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True,db_index=True)
     last_modified = models.DateTimeField(auto_now=True)

@@ -30,4 +30,4 @@ class FoodCategorySerializer(serializers.HyperlinkedModelSerializer):
 class NotificationSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Notification
-    fields = ('message', 'is_pushed', 'url')
+    fields = ('mobile', 'message', 'is_pushed', 'url')

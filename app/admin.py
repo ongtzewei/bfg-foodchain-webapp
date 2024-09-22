@@ -10,7 +10,6 @@ class FoodCategoryAdmin(admin.ModelAdmin):
 
 
 class FoodAdmin(admin.ModelAdmin):
-    #inlines = (FoodReplacementInline,)
     list_display = ('name', 'category', 'calories', 'date_added')
     list_filter = ('category', 'date_added')
     search_fields = ('name',)
