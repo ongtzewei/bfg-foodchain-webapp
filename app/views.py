@@ -35,7 +35,7 @@ class NotificationViewSet(viewsets.ModelViewSet):
   permission_classes = [permissions.AllowAny]
 
   def create(self, request, *args, **kwargs):
-    serializer = serializers.NotificationSerializer(data=request.data)
+    serializer = serializers.NotificationSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
