@@ -8,6 +8,7 @@ from app import views
 router = routers.DefaultRouter()
 router.register('categories', views.FoodCategoryViewSet)
 router.register('foods', views.FoodViewSet)
+router.register('notifications', views.NotificationViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
