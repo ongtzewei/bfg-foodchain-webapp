@@ -42,10 +42,7 @@ class NotificationViewSet(viewsets.ModelViewSet):
     serializer = serializers.NotificationSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():
       serializer.save()
-      NotificationViewSet.send_notification(message='''
-                                            Thank you for wanting to stay updated! 
-                                            We will be checking in with you in a week's time to see how you're doing with your meals and progress. 
-                                            ''',
+      NotificationViewSet.send_notification(message="Thank you! We will check in with you in a week's time to see how you're doing with your meals and progress.",
                                             mobile=serializer.validated_data['mobile'])
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

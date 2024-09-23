@@ -11,10 +11,7 @@ def trigger_whatsapp_followup(request):
         try:
             message = TwiloClient.messages.create(
                 from_=f"whatsapp:{settings.TWILIO_NUMBER}",
-                body='''
-                Just checking in to see how your meals are going!
-                Have you noticed any changes or challenges with your nutrition this week? 
-                ''',
+                body="Hey, just checking in to see how your meals are going! Have you noticed any changes or challenges with your nutrition this week?",
                 to=f"whatsapp:{notification.mobile}"
             )
             print(f"Message sent to {notification.mobile}, SID: {message.sid}")
