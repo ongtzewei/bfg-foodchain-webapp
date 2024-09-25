@@ -14,7 +14,7 @@ def trigger_whatsapp_followup(request):
                 body="Hey, just checking in to see how your meals are going! "\
                     "Have you noticed any changes or challenges with your nutrition this week? "\
                     "Click the link below to see your past meals. "\
-                    f"https://masak-foodchain.vercel.app/?notification={notification.id}"
+                    f"https://masak-foodchain.vercel.app/?notification={notification.id}",
                 to=f"whatsapp:{notification.mobile}"
             )
             print(f"Message sent to {notification.mobile}, SID: {message.sid}")
