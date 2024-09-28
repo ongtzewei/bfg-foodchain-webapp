@@ -48,7 +48,8 @@ TEMPLATES = [
     },
 ]
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(',')
+SESSION_COOKIE_SAMESITE = 'None'
+# CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(',')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 WSGI_APPLICATION = 'bfg_foodchain_webapp.wsgi.application'
 ROOT_URLCONF = 'app.urls'
